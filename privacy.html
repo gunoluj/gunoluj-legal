@@ -2,74 +2,158 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Gunoluj Privacy Policy</title>
 <style>
-  :root { color-scheme: light dark; }
-  body { font-family: -apple-system, system-ui, sans-serif; margin: 0; padding: 20px 20px 48px; line-height: 1.55; font-size: 15px; background: #314256; color: #f8fafc; }
-  h1 { font-size: 24px; margin: 4px 0 4px; }
-  h2 { font-size: 17px; margin: 26px 0 8px; color: #5eead4; }
-  p, li { color: #e2e8f0; }
-  .meta { color: #cbd5e1; font-size: 13px; }
-  .card { background: #3d5169; border: 1px solid #577292; border-radius: 16px; padding: 14px 16px; margin-top: 14px; }
-  @media (prefers-color-scheme: light) {
-    body { background: #f8fafc; color: #1e293b; }
-    p, li { color: #334155; }
-    h2 { color: #0f766e; }
-    .meta { color: #475569; }
-    .card { background: #ffffff; border-color: #cbd5e1; }
+  :root {
+    color-scheme: light dark;
+    --canvas: #F7F4FF; --card: #FFFFFF; --border: #DDD6F0;
+    --ink: #0F172A; --soft: #1E293B; --muted: #475569;
+    --teal: #0D9488; --teal-text: #0F766E; --teal-wash: #CCFBF1; --teal-edge: #5EEAD4;
+    --glow-1: rgba(227, 213, 255, .9); --glow-2: rgba(248, 221, 246, .8); --glow-3: rgba(220, 228, 255, .85);
+    --shadow: 0 10px 30px rgba(124, 58, 237, .08);
   }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --canvas: #314256; --card: #34465B; --border: #4A6280;
+      --ink: #F1F5F9; --soft: #E2E8F0; --muted: #CBD5E1;
+      --teal-text: #5EEAD4; --teal-wash: rgba(19, 78, 74, .7); --teal-edge: rgba(20, 184, 166, .6);
+      --glow-1: rgba(109, 40, 217, .22); --glow-2: rgba(162, 28, 175, .14); --glow-3: rgba(79, 70, 229, .16);
+      --shadow: 0 10px 30px rgba(0, 0, 0, .25);
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh;
+    padding: 20px 18px calc(48px + env(safe-area-inset-bottom));
+    font: 15px/1.6 -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+    color: var(--soft); background: var(--canvas);
+    background-image:
+      radial-gradient(circle at 12% 0%, var(--glow-1), transparent 45%),
+      radial-gradient(circle at 95% 18%, var(--glow-2), transparent 40%),
+      radial-gradient(circle at 30% 85%, var(--glow-3), transparent 45%);
+    background-attachment: fixed;
+    -webkit-text-size-adjust: 100%;
+  }
+  main { max-width: 640px; margin: 0 auto; }
+  .hero { display: flex; align-items: center; gap: 14px; margin: 4px 0 18px; }
+  .badge {
+    flex: none; width: 52px; height: 52px; border-radius: 16px;
+    display: grid; place-items: center; color: #fff;
+    background: linear-gradient(135deg, #14B8A6, #0F766E);
+    box-shadow: 0 8px 20px rgba(15, 118, 110, .3);
+  }
+  .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--teal-text); }
+  h1 { margin: 2px 0 0; font-size: 28px; line-height: 1.15; font-weight: 800; color: var(--ink); letter-spacing: -.01em; }
+  .chip {
+    display: inline-block; margin-top: 8px; padding: 4px 10px; border-radius: 999px;
+    font-size: 12px; font-weight: 600; color: var(--muted);
+    background: var(--card); border: 1px solid var(--border);
+  }
+  .lead {
+    margin: 0 0 14px; padding: 16px 18px; border-radius: 20px;
+    background: var(--teal-wash); border: 1px solid var(--teal-edge);
+    color: var(--ink); font-weight: 500;
+  }
+  section {
+    margin: 12px 0; padding: 16px 18px; border-radius: 20px;
+    background: var(--card); border: 1px solid var(--border); box-shadow: var(--shadow);
+  }
+  h2 { display: flex; align-items: center; gap: 10px; margin: 0 0 8px; font-size: 16px; font-weight: 800; color: var(--ink); }
+  h2 .num {
+    flex: none; width: 26px; height: 26px; border-radius: 9px;
+    display: grid; place-items: center; font-size: 13px; font-weight: 800;
+    color: var(--teal-text); background: var(--teal-wash);
+  }
+  p { margin: 6px 0; }
+  ul { margin: 6px 0; padding: 0; list-style: none; }
+  li { position: relative; padding-left: 18px; margin: 8px 0; }
+  li::before {
+    content: ""; position: absolute; left: 2px; top: .62em;
+    width: 7px; height: 7px; border-radius: 50%; background: var(--teal);
+  }
+  strong { color: var(--ink); font-weight: 700; }
+  a { color: var(--teal-text); font-weight: 600; text-decoration: none; }
+  footer { margin-top: 22px; text-align: center; font-size: 12px; color: var(--muted); }
 </style>
 </head>
 <body>
-<h1>Privacy Policy</h1>
-<p class="meta">Operator: Gunoluj · Effective September 29, 2026</p>
+<main>
+  <header class="hero">
+    <div class="badge" aria-hidden="true">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    </div>
+    <div>
+      <div class="eyebrow">Gunoluj</div>
+      <h1>Privacy Policy</h1>
+      <span class="chip">Effective September 29, 2026</span>
+    </div>
+  </header>
 
-<div class="card">
-  <p>Gunoluj is a recipe organizer. Everything you enter stays on this device. Gunoluj has no accounts on a server, no cloud sync and no advertising SDKs.</p>
-</div>
+  <p class="lead">Gunoluj is a recipe organizer. Everything you enter stays on this device. There are no server accounts, no cloud sync and no advertising SDKs.</p>
 
-<h2>1. Information you provide</h2>
-<ul>
-  <li><strong>Recipe text</strong> you paste, type or dictate, and the ingredients, amounts, units and steps you proofread.</li>
-  <li><strong>Recipe images</strong> you capture with Take Recipe Photo or import with Choose Photo. A working copy is stored in the app's private folder. Your original photo in the Photos library is never modified.</li>
-  <li><strong>Cooking selections</strong>, shopping list check marks and timer values you set.</li>
-  <li><strong>Cooking packs</strong> (PDF files) you choose to generate.</li>
-</ul>
+  <section>
+    <h2><span class="num">1</span>Information you provide</h2>
+    <ul>
+      <li><strong>Recipe text</strong> you paste, type or dictate, and the ingredients, amounts, units and steps you proofread.</li>
+      <li><strong>Recipe images</strong> you capture with Take Photo or import with Photo Library. A working copy is stored in the app's private folder. Your original photo in the Photos library is never modified.</li>
+      <li><strong>Cooking selections</strong>, shopping list check marks and timer values you set.</li>
+      <li><strong>Cooking packs</strong> (PDF files) you choose to generate.</li>
+    </ul>
+  </section>
 
-<h2>2. How information is processed</h2>
-<p>Text recognition from images uses Apple's on-device Vision framework. Speech transcription uses Apple's on-device speech recognition and only starts when on-device recognition is available. Recipe parsing and shopping list merging run on this device with fixed rules; Gunoluj does not send your recipes to any third party service.</p>
+  <section>
+    <h2><span class="num">2</span>How information is processed</h2>
+    <p>Text recognition from images uses Apple's on-device Vision framework. Speech transcription uses Apple's on-device speech recognition and only starts when on-device recognition is available. Recipe parsing and shopping list merging run on this device with fixed rules; Gunoluj does not send your recipes to any third party service.</p>
+  </section>
 
-<h2>3. Permissions</h2>
-<ul>
-  <li><strong>Camera</strong> — only when you tap Take Recipe Photo, to capture recipe text you already have.</li>
-  <li><strong>Photos</strong> — only when you tap Choose Photo, to import a recipe image that contains text.</li>
-  <li><strong>Microphone and Speech Recognition</strong> — only when you tap Speak Recipe Text, to transcribe a recipe you read aloud.</li>
-  <li><strong>Notifications</strong> — used to tell you when a kitchen timer you started has finished.</li>
-  <li><strong>App Tracking Transparency</strong> — Gunoluj shows Apple's system prompt; Gunoluj does not track you across other companies' apps or websites.</li>
-</ul>
-<p>If you decline a permission, you can still type or paste recipe text.</p>
+  <section>
+    <h2><span class="num">3</span>Permissions</h2>
+    <ul>
+      <li><strong>Camera</strong> — only when you tap Take Photo, to capture recipe text you already have.</li>
+      <li><strong>Photos</strong> — only when you tap Photo Library, to import a recipe image that contains text.</li>
+      <li><strong>Microphone and Speech Recognition</strong> — only when you tap Speak Text, to transcribe a recipe you read aloud.</li>
+      <li><strong>Notifications</strong> — used to tell you when a kitchen timer you started has finished.</li>
+      <li><strong>App Tracking Transparency</strong> — Gunoluj shows Apple's system prompt; Gunoluj does not track you across other companies' apps or websites.</li>
+    </ul>
+    <p>If you decline a permission, you can still type or paste recipe text.</p>
+  </section>
 
-<h2>4. In-app purchases</h2>
-<p>Purchases are processed by Apple. Gunoluj receives a signed transaction record from Apple (transaction ID, product ID and date) and stores it on this device to add Sparks to your balance exactly once. Gunoluj never sees your payment details. Consumable Sparks are stored on this device and cannot be restored after the app is removed or its data is cleared.</p>
+  <section>
+    <h2><span class="num">4</span>In-app purchases</h2>
+    <p>Purchases are processed by Apple. Gunoluj receives a signed transaction record from Apple (transaction ID, product ID and date) and stores it on this device to add Sparks to your balance exactly once. Gunoluj never sees your payment details. Consumable Sparks are stored on this device and cannot be restored after the app is removed or its data is cleared.</p>
+  </section>
 
-<h2>5. Storage and retention</h2>
-<p>Data is stored in the app's private storage on this device until you delete it. Deleting a recipe does not delete cooking packs you already generated.</p>
+  <section>
+    <h2><span class="num">5</span>Storage and retention</h2>
+    <p>Data is stored in the app's private storage on this device until you delete it. Deleting a recipe does not delete cooking packs you already generated.</p>
+  </section>
 
-<h2>6. Log Out, Clear All Data and Delete Account</h2>
-<ul>
-  <li><strong>Log Out</strong> ends the local session. Your recipes, packs and Sparks stay on this device.</li>
-  <li><strong>Clear All Data</strong> permanently erases recipes, drafts, media, cooking packs, purchase records, preferences and remaining Sparks, then returns you to the first-run screen.</li>
-  <li><strong>Delete Account</strong> performs the same erase and also ends the local session.</li>
-</ul>
+  <section>
+    <h2><span class="num">6</span>Log Out, Clear All Data and Delete Account</h2>
+    <ul>
+      <li><strong>Log Out</strong> ends the local session. Your recipes, packs and Sparks stay on this device.</li>
+      <li><strong>Clear All Data</strong> permanently erases recipes, drafts, media, cooking packs, purchase records, preferences and remaining Sparks, then returns you to the first-run screen.</li>
+      <li><strong>Delete Account</strong> performs the same erase and also ends the local session.</li>
+    </ul>
+  </section>
 
-<h2>7. Children</h2>
-<p>Gunoluj is a general audience cooking utility and does not knowingly collect personal information from children.</p>
+  <section>
+    <h2><span class="num">7</span>Children</h2>
+    <p>Gunoluj is a general audience cooking utility and does not knowingly collect personal information from children.</p>
+  </section>
 
-<h2>8. Changes</h2>
-<p>If this policy changes, the updated version will be bundled with the app update and the effective date above will change.</p>
+  <section>
+    <h2><span class="num">8</span>Changes</h2>
+    <p>If this policy changes, the updated version will be bundled with the app update and the effective date above will change.</p>
+  </section>
 
-<h2>9. Contact</h2>
-<p>Gunoluj Support — support@gunoluj.app</p>
+  <section>
+    <h2><span class="num">9</span>Contact</h2>
+    <p>Gunoluj Support — <a href="mailto:support@gunoluj.app">support@gunoluj.app</a></p>
+  </section>
+
+  <footer>Gunoluj · Your recipes, ready to cook</footer>
+</main>
 </body>
 </html>

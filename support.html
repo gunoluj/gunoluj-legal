@@ -2,32 +2,117 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Gunoluj Support</title>
 <style>
-  :root { color-scheme: light dark; }
-  body { font-family: -apple-system, system-ui, sans-serif; margin: 0; padding: 20px 20px 48px; line-height: 1.55; font-size: 15px; background: #314256; color: #f8fafc; }
-  h1 { font-size: 24px; margin: 4px 0 4px; }
-  h2 { font-size: 17px; margin: 24px 0 8px; color: #5eead4; }
-  p, li { color: #e2e8f0; }
-  @media (prefers-color-scheme: light) {
-    body { background: #f8fafc; color: #1e293b; }
-    p, li { color: #334155; }
-    h2 { color: #0f766e; }
+  :root {
+    color-scheme: light dark;
+    --canvas: #F7F4FF; --card: #FFFFFF; --border: #DDD6F0;
+    --ink: #0F172A; --soft: #1E293B; --muted: #475569;
+    --teal: #0D9488; --teal-text: #0F766E; --teal-wash: #CCFBF1; --teal-edge: #5EEAD4;
+    --glow-1: rgba(227, 213, 255, .9); --glow-2: rgba(248, 221, 246, .8); --glow-3: rgba(220, 228, 255, .85);
+    --shadow: 0 10px 30px rgba(124, 58, 237, .08);
   }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --canvas: #314256; --card: #34465B; --border: #4A6280;
+      --ink: #F1F5F9; --soft: #E2E8F0; --muted: #CBD5E1;
+      --teal-text: #5EEAD4; --teal-wash: rgba(19, 78, 74, .7); --teal-edge: rgba(20, 184, 166, .6);
+      --glow-1: rgba(109, 40, 217, .22); --glow-2: rgba(162, 28, 175, .14); --glow-3: rgba(79, 70, 229, .16);
+      --shadow: 0 10px 30px rgba(0, 0, 0, .25);
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh;
+    padding: 20px 18px calc(48px + env(safe-area-inset-bottom));
+    font: 15px/1.6 -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+    color: var(--soft); background: var(--canvas);
+    background-image:
+      radial-gradient(circle at 12% 0%, var(--glow-1), transparent 45%),
+      radial-gradient(circle at 95% 18%, var(--glow-2), transparent 40%),
+      radial-gradient(circle at 30% 85%, var(--glow-3), transparent 45%);
+    background-attachment: fixed;
+    -webkit-text-size-adjust: 100%;
+  }
+  main { max-width: 640px; margin: 0 auto; }
+  .hero { display: flex; align-items: center; gap: 14px; margin: 4px 0 18px; }
+  .badge {
+    flex: none; width: 52px; height: 52px; border-radius: 16px;
+    display: grid; place-items: center; color: #fff;
+    background: linear-gradient(135deg, #14B8A6, #0F766E);
+    box-shadow: 0 8px 20px rgba(15, 118, 110, .3);
+  }
+  .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--teal-text); }
+  h1 { margin: 2px 0 0; font-size: 28px; line-height: 1.15; font-weight: 800; color: var(--ink); letter-spacing: -.01em; }
+  .chip {
+    display: inline-block; margin-top: 8px; padding: 4px 10px; border-radius: 999px;
+    font-size: 12px; font-weight: 600; color: var(--muted);
+    background: var(--card); border: 1px solid var(--border);
+  }
+  .lead {
+    margin: 0 0 14px; padding: 16px 18px; border-radius: 20px;
+    background: var(--teal-wash); border: 1px solid var(--teal-edge);
+    color: var(--ink); font-weight: 500;
+  }
+  section {
+    margin: 12px 0; padding: 16px 18px; border-radius: 20px;
+    background: var(--card); border: 1px solid var(--border); box-shadow: var(--shadow);
+  }
+  h2 { display: flex; align-items: center; gap: 10px; margin: 0 0 8px; font-size: 16px; font-weight: 800; color: var(--ink); }
+  h2 .num {
+    flex: none; width: 26px; height: 26px; border-radius: 9px;
+    display: grid; place-items: center; font-size: 13px; font-weight: 800;
+    color: var(--teal-text); background: var(--teal-wash);
+  }
+  p { margin: 6px 0; }
+  ul { margin: 6px 0; padding: 0; list-style: none; }
+  li { position: relative; padding-left: 18px; margin: 8px 0; }
+  li::before {
+    content: ""; position: absolute; left: 2px; top: .62em;
+    width: 7px; height: 7px; border-radius: 50%; background: var(--teal);
+  }
+  strong { color: var(--ink); font-weight: 700; }
+  a { color: var(--teal-text); font-weight: 600; text-decoration: none; }
+  footer { margin-top: 22px; text-align: center; font-size: 12px; color: var(--muted); }
 </style>
 </head>
 <body>
-<h1>Support</h1>
-<p>Questions about Gunoluj? Email <strong>support@gunoluj.app</strong>.</p>
+<main>
+  <header class="hero">
+    <div class="badge" aria-hidden="true">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+    </div>
+    <div>
+      <div class="eyebrow">Gunoluj</div>
+      <h1>Support</h1>
+    </div>
+  </header>
 
-<h2>Common questions</h2>
-<ul>
-  <li><strong>Text was not recognized from my photo.</strong> Gunoluj reads recipe text only. Photos of finished dishes do not contain a recipe; paste or type the recipe text instead.</li>
-  <li><strong>Why are some ingredients listed separately?</strong> Items are merged only when the name and unit match exactly. Different units and missing amounts are kept separate so nothing is guessed.</li>
-  <li><strong>Did I lose Sparks when generation failed?</strong> No. Sparks are used only after the pack PDF is saved.</li>
-  <li><strong>Can I restore Sparks on a new phone?</strong> No. Sparks are consumable and stored on this device.</li>
-  <li><strong>I denied camera, photos or microphone.</strong> You can still paste text, or enable access in the iOS Settings app.</li>
-</ul>
+  <p class="lead">Questions about Gunoluj? Email <a href="mailto:support@gunoluj.app">support@gunoluj.app</a>.</p>
+
+  <section>
+    <h2><span class="num">1</span>Text was not recognized from my photo</h2>
+    <p>Gunoluj reads recipe text only. Photos of finished dishes do not contain a recipe; paste or type the recipe text instead.</p>
+  </section>
+  <section>
+    <h2><span class="num">2</span>Why are some ingredients listed separately?</h2>
+    <p>Items are combined only when the name and unit are exactly the same. Different units and missing amounts stay on their own lines so nothing is guessed.</p>
+  </section>
+  <section>
+    <h2><span class="num">3</span>Did I lose Sparks when generation failed?</h2>
+    <p>No. Sparks are used only after the pack PDF is saved.</p>
+  </section>
+  <section>
+    <h2><span class="num">4</span>Can I restore Sparks on a new phone?</h2>
+    <p>No. Sparks are consumable and stored on this device.</p>
+  </section>
+  <section>
+    <h2><span class="num">5</span>I denied camera, photos or microphone</h2>
+    <p>You can still paste text, or enable access in the iOS Settings app.</p>
+  </section>
+
+  <footer>Gunoluj · Your recipes, ready to cook</footer>
+</main>
 </body>
 </html>
